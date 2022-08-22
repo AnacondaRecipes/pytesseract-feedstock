@@ -5,43 +5,37 @@ package:
   name: {{ name|lower }}
   version: {{ version }}
 
-
 source:
   url: https://github.com/madmaze/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: 1de64cae604fc0b2bc5b185620c612199b01c833c64c2a4a9e8877ace1ed5a92
 
-
 build:
-  noarch: python
   number: 0
+  skip: True  # [py<37]
   script: {{ PYTHON }} -m pip install . -vv
   entry_points:
     - pytesseract = pytesseract.pytesseract:main
 
-
 requirements:
   host:
-    - python >=3.7
+    - python
     - pip
-
+    - setuptools >=40.0.4
+    - wheel >=0.29.0
   run:
-    - python >=3.7
-    - pillow
-    - packaging
-
+    - python
+    - pillow >=8.0.0
+    - packaging >=21.3
 
 test:
-  requires:
-    - flake8
-    - pep8-naming
-    - flake8-quotes
-    - pytest
-
   imports:
     - PIL
     - PIL.Image
     - pytesseract
-
+  requires:
+    - pip
+  commands:
+    - python -m pip check
 
 about:
   home: https://github.com/madmaze/pytesseract
@@ -57,6 +51,8 @@ about:
     imaging libraries, including jpeg, png, gif, bmp, tiff, and others.
     Additionally, if used as a script, Python-tesseract will print the
     recognized text instead of writing it to a file
+  dev_url: https://github.com/madmaze/pytesseract
+  doc_url: https://github.com/madmaze/pytesseract/blob/master/README.rst
 
 
 extra:
