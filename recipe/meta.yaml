@@ -11,8 +11,8 @@ source:
 
 build:
   number: 0
-  # Currently tesseract isn't available on win-64
-  skip: True  # [py<37 or win]
+  # Currently tesseract isn't available on win-64 and s390x
+  skip: True  # [py<37 or win or s390x]
   script: {{ PYTHON }} -m pip install . -vv
   entry_points:
     - pytesseract = pytesseract.pytesseract:main
