@@ -10,7 +10,7 @@ source:
   sha256: 1de64cae604fc0b2bc5b185620c612199b01c833c64c2a4a9e8877ace1ed5a92
 
 build:
-  number: 0
+  number: 1
   # Currently tesseract isn't available on win-64 and s390x
   skip: True  # [py<37 or win or s390x]
   script: {{ PYTHON }} -m pip install . -vv
