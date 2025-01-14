@@ -50,7 +50,6 @@ about:
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
-  license_url: https://github.com/madmaze/pytesseract/blob/master/LICENSE
   summary: Python-tesseract is an optical character recognition (OCR) tool for python.
 
   description: |
