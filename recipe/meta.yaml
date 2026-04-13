@@ -1,5 +1,5 @@
 {% set name = "pytesseract" %}
-{% set version = "0.3.10" %}
+{% set version = "0.3.13" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/madmaze/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 1de64cae604fc0b2bc5b185620c612199b01c833c64c2a4a9e8877ace1ed5a92
+  sha256: 454ca16dc7fa59aa9c8ba42500992531773fbdc04caef1b39611755cae9f34bf
 
 build:
-  number: 1
+  number: 0
   # Currently tesseract isn't available on win-64 and s390x
   skip: True  # [py<37 or win or s390x]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
