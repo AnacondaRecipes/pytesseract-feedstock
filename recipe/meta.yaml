@@ -11,8 +11,8 @@ source:
 
 build:
   number: 0
-  # Currently tesseract isn't available on win-64 and s390x
-  skip: True  # [py<37 or win or s390x]
+  # tesseract is not available on s390x. win-64 was enabled in PKG-13890.
+  skip: True  # [py<37 or s390x]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - pytesseract = pytesseract.pytesseract:main
@@ -35,15 +35,20 @@ test:
     - PIL.Image
     - pytesseract
   files:
+    # eurotext.expected.txt is the OCR baseline run_test.py compares against,
+    # copied from tesseract-feedstock so both packages test the same output.
     - eurotext.tif
+    - eurotext.expected.txt
   requires:
     - pip
     # py-opencv is needed for the test command
     - py-opencv
   commands:
     - python -m pip check
-    - echo "Test CLI usage:" && pytesseract -l eng eurotext.tif 
-    - echo "Test pytesseract library usage:" && python -c "from PIL import Image; import pytesseract; print(pytesseract.image_to_string(Image.open('eurotext.tif')))"
+    # Smoke test the CLI entry point runs (locates the tesseract binary).
+    - pytesseract -l eng eurotext.tif
+    # The OCR correctness check lives in run_test.py (auto-discovered by
+    # conda-build): it compares image_to_string output to eurotext.expected.txt.
 
 about:
   home: https://github.com/madmaze/pytesseract
