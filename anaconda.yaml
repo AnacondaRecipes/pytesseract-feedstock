@@ -1,0 +1,7 @@
+anaconda_config_version: 1
+upstream_sources:
+  - github:
+      identifier: madmaze/pytesseract
+      use_max_tag: true
+      from_pattern: ^v?(\d+(?:\.\d+)*.*)$
+      to_pattern: \1

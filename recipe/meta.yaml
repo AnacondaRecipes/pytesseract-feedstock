@@ -25,12 +25,12 @@ requirements:
     - wheel >=0.29.0
     # tesseract is CBC-pinned, so the linter wants it in host; its run_exports
     # then pin the run dependency below.
-    - tesseract
+    - tesseract {{ tesseract }}
   run:
     - python
     - pillow >=8.0.0
     - packaging >=21.3
-    - tesseract
+    - tesseract {{ tesseract }}
 
 test:
   imports:
