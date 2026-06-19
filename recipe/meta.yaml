@@ -23,6 +23,9 @@ requirements:
     - pip
     - setuptools >=40.0.4
     - wheel >=0.29.0
+    # tesseract is CBC-pinned, so the linter wants it in host; its run_exports
+    # then pin the run dependency below.
+    - tesseract
   run:
     - python
     - pillow >=8.0.0
