@@ -44,8 +44,6 @@ test:
     - eurotext.expected.txt
   requires:
     - pip
-    # py-opencv is needed for the test command
-    - py-opencv
   commands:
     - python -m pip check
     # Smoke test the CLI entry point runs (locates the tesseract binary).
