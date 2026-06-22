@@ -10,7 +10,7 @@ source:
   sha256: 454ca16dc7fa59aa9c8ba42500992531773fbdc04caef1b39611755cae9f34bf
 
 build:
-  number: 0
+  number: 1
   # tesseract is not available on s390x. win-64 was enabled in PKG-13890.
   skip: True  # [py<37 or s390x]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
