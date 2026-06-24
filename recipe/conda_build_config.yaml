@@ -1,2 +1,2 @@
-tesseract:
+tesseract: # we can drop this the next time we touch this feedstock -- pinning now until the cbc gets updated automatically
 - 5.5.2
